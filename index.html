@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Responsive Cards</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      margin: 20px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex-basis: calc(50% - 10px);
+      background-color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      min-height: 500px;
+      margin-bottom: 20px;
+    }
+
+    .card:nth-child(even) {
+      margin-left: 20px;
+    }
+    .card-iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+      .card {
+        flex-basis: calc(100% - 20px);
+        margin-left: 0;
+        min-height: 500px;
+        height: 500px;
+        margin-bottom: 20px;
+      }
+      .card iframe {
+        height: 500px;
+      }
+      .row {
+        flex-direction: column;
+      }
+      .card:nth-child(even) {
+        margin-left: 0;
+      }
+
+    }
+  </style>
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  <link rel="stylesheet" href="fireflySDKStyles-processed.css" >-->
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <h2>Card 1</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="card">
+      <div id="root"></div>
+
+      <!--      <h2>Card 2</h2>-->
+<!--      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+      <div id="reactIframe" style="height: 100%; width: 100%"></div>
+
+<!--      <iframe class="card-iframe" src="https://mars2.fireflylumi.com/" frameborder="0"></iframe>-->
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="card">
+<!--      <h2>Card 3</h2>-->
+<!--      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>-->
+      <div id="reactIframe2" style="height: 100%; width: 100%"></div>
+      <button id="teststyles">Update Styles</button>
+
+
+    </div>
+    <div class="card">
+      <h2>Card 4</h2>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card">
+      <h2>Card 5</h2>
+      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+    </div>
+    <div class="card">
+      <h2>Card 6</h2>
+      <p>Deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+</div>
+<!--<script src="backup-FireflyReactSDK.bundle.js"></script>-->
+<!--<script src="FireflyReactSDK.bundle.js"></script>-->
+<script src="FireflyReactSDKLog.bundle.js"></script>
+<!--<script src="https://mars2.fireflylumi.com/FireflyReactSDK.bundle.js"></script>-->
+
+<script defer>
+  const variables = {
+    htmlContainerID: "#reactIframe",
+    // cssURL: "fireflySDKDuplicates.css",
+    cssURL: "fireflySDKMinified.css",
+    url: 'https://mars2.fireflylumi.com:8001',
+    recipeboardToken: '9VtgdMgJ8U6s93TtIeYKWw',
+    appToken: '571593bb-52b9-4063-8565-aa56435de9aa',
+    sessionToken: 'AngularTokenAAA',
+    SAMLAssertion: null,
+    username: 'Username',
+    height: '100%',
+    width: '100%',
+    maxHeight: '100%',
+  }
+  // FireflyReact.render(variables, "#reactIframe", "fireflySDKDuplicates.css")
+</script>
+<script defer>
+  const variables2 = {
+    htmlContainerID: "#reactIframe2",
+    // cssURL: "fireflySDKDuplicates.css",
+    cssURL: "fireflySDKMinified.css",
+    url: 'https://mars2.fireflylumi.com:8001',
+    recipeboardToken: 'Xnj577TmWk-kY9rX3kfS2A',
+    appToken: '571593bb-52b9-4063-8565-aa56435de9aa',
+    sessionToken: 'AngularTokenAAA',
+    SAMLAssertion: "null",
+    username: 'Username',
+    height: '100%',
+    width: '100%',
+    maxHeight: '100%',
+  }
+    // Iframe version with multiple widgets
+    // FireflyReact.render([variables, variables2])
+    FireflyReact.render([variables2])
+
+    // Non iframe version
+    // FireflyReact.render(variables2, "#reactIframe2", null)
+
+  // setTimeout(() => {
+  //   FireflyReact.render(variables2, "#reactIframe2", "fireflySDKDuplicates.css")
+  // }, 3000)
+  const btn = document.getElementById("teststyles")
+  btn.addEventListener("click", () => {
+    // FireflyReact.updateAppStyles("#reactIframe2")
+    FireflyReact.updateAppStyles("#reactIframe2", {
+        fontSize: "20px",
+        widgetBackgroundColor: "#343a40",
+        // widgetBackgroundColor: "red",
+        widgetBorder: "1px solid rgba(255, 255, 255, 0.125)",
+        widgetBorderRadius: "15px",
+        chartHeaderBackgroundColor: "#414954",
+        chartHeaderFontColor: "#ACB6C1",
+        chartBackgroundColor: "#38404a",
+
+      })
+  })
+</script>
+
+</body>
+</html>
